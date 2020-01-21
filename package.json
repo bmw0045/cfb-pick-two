@@ -4,7 +4,8 @@
   "description": "A College Football Pick Two App written in Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "homepage": "https://github.com/bmw0045/cfb-pick-two#readme",
   "engines": {
     "node": "12.13.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
