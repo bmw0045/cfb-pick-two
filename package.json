@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/bmw0045/cfb-pick-two/issues"
   },
-  "homepage": "https://github.com/bmw0045/cfb-pick-two#readme"
+  "homepage": "https://github.com/bmw0045/cfb-pick-two#readme",
+  "engines": {
+    "node": "12.13.0"
+  }
 }
