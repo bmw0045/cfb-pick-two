@@ -4,3 +4,8 @@ body {
     background-attachment: fixed;
     background-position: center;
 }
+
+h1 {
+    text-align: center;
+    color: azure;
+}
