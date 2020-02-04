@@ -1,0 +1,8 @@
+extends layout.pug
+block content
+    h1#title Login
+        #register
+            form(name="login-form" method="POST" action="/login/success")
+                input(name='email' type='text' placeholder='Email')
+                input(name='password' type='password' placeholder='Password')
+                input(type='submit' value='Register')

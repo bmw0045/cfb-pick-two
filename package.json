@@ -27,12 +27,18 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
+    "cheerio": "^1.0.0-rc.3",
+    "connect-flash": "^0.1.1",
     "express": "^4.17.1",
-<<<<<<< HEAD
-=======
+    "express-messages": "^1.0.1",
+    "express-session": "^1.17.0",
+    "express-validator": "^6.4.0",
+    "integer": "^2.1.0",
     "mongodb": "^3.5.2",
->>>>>>> 1818f861e1467c25b3da4cd04914e27815abaa8b
+    "mongoose": "^5.8.10",
     "nodemon": "^2.0.2",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "request": "^2.88.0"
   }
 }
