@@ -4,13 +4,35 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const request = require('request');
+const Strategy = require('passport-local');
+const passport = require('passport');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 //mongoose.connect('mongodb+srv://bmw0045:Publicvoid27@cfbdb-7xxrz.mongodb.net/test?retryWrites=true&w=majority')
 //init app
+
 const app = express();
 //Router use & init
 const router = express.Router();
+const authRouter = require('./routes/auth');
 app.use("/", router);
+
+app.use(session({
+    secret: 'session secret',
+    resave: false,
+    saveUnintialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+app.use('/auth', authRouter);
+
+app.use((req, res, next) => {
+    res.locals.loggedIn = req.isAuthenticated();
+    next();
+});
 
 const mongoDB = 'mongodb+srv://bmw0045:Publicvoid27@cfbdb-7xxrz.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.Promise = global.Promise;
@@ -21,12 +43,37 @@ mongoose.connect(mongoDB, {useUnifiedTopology: true}, (err, client) => {
     app.listen(4000, () => {
         console.log('db listening on 4000...')
         })
+    const users = db.collection('users');
 });
 
 let db = mongoose.connection;
 
 db.once('open', function(){
     console.log('Connected to MongoDB');
+});
+
+passport.use(new Strategy(
+    (username, password, done) => {
+        app.locals.users.findOne({username}, (err, user) => {
+            if (err) {
+                return done(err);
+            }
+            if (!user) {
+                return done(null, false);
+            }
+            if (user.password != password) {
+                return done(null, false);
+            }
+        });
+    }
+));
+
+passport.serializeUser((user, done) => {
+    done(null, user._id);
+});
+
+passport.deserializeUser((id, done) => {
+    done(null, {id});
 });
 
 var url = 'https://api.collegefootballdata.com/rankings?year=2019&week=10&seasonType=regular'

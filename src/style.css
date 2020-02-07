@@ -50,6 +50,13 @@ input {
 
 }
 
+td.rankingsSchool {
+    padding: 25px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+
 td.rankings {
     padding: 25px;
     text-align: center;
@@ -63,5 +70,6 @@ th.rankings {
     border-bottom: 1px solid #ddd;
     font-size: 15px;
     color: azure;
+    font-weight: bold;
 }
 

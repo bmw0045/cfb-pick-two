@@ -1,16 +1,14 @@
 extends layout
 block content
-    h1#title Top 25
+    h1#title Submit Your Picks
     table#rankings
         thead.thead-dark
             tr
                 th.rankings(scope='col') Rank
                 th.rankings(scope='col') School
-                th.rankings(scope='col') Conference
+                th.rankings(scope='col') Selection
             each n in teams
                 tr.bg-light
                     td.rankings= n.rank
                     td.rankingsSchool= n.school
                     td.rankings= n.conference
-
-
